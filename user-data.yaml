@@ -106,12 +106,13 @@ packages:
 #  - linux-headers-generic
   # workaround for https://askubuntu.com/questions/1436601/ubuntu-drivers-unboundlocalerror-local-variable-version-referenced-before-as
 bootcmd:
+  - mkdir -p "/opt/unityhub/chrome-sandbox"
+  - mkdir -p "/opt/unity/editors"
+runcmd:
   #---Updating network config for use with static ip addressing---
   - netplan --degug generate
   - netplan --debug apply
-  - mkdir -p "/opt/unityhub/chrome-sandbox"
-  - mkdir -p "/opt/unity/editors"
-#runcmd:
+  - rm /etc/netplan/50*
 #  #---Downloading xorg.conf---"
 #  - curl https://raw.githubusercontent.com/cloudymax/Scrap-Metal/main/virtual-machines/qemu/configs/xorg.conf.headless > /tmp/xorg.conf
 #  - cp /tmp/xorg.conf /etc/X11/xorg.conf 
